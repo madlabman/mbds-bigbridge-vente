@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  #kv:
+
+  # NEO4J 
+  # @see https://neo4j.com/developer/docker-run-neo4j/
+  graph:
+    image: neo4j:3.5.4
+    environment:
+      NEO4J_AUTH: neo4j/neo4jpa55
+    volumes:
+      - db_graph:/data
+    ports:
+      - 7474:7474 # http
+      - 7687:7687 # bolt
+      
+  #column:
+
+  #hive:
+
+  #oracle:
+ 
+  # Created for executing all commands
+  # Provide prepared environment
+  cli:
+    build:
+      context: ./cli
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./cli:/app
+
+volumes:
+  # To store data
+  db_kv:
+  db_column:
+  db_graph:
+  db_hive:
+  db_oracle:
+

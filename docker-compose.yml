@@ -2,7 +2,15 @@ version: '3'
 
 services:
 
-  #kv:
+  # Riak
+  # @see https://docs.docker.com/engine/examples/running_riak_service/
+  kv:
+    build:
+      context: ./riak
+      dockerfile: ./Dockerfile
+    ports:
+      - 8087:8087
+      - 8098:8098
 
   # NEO4J 
   # @see https://neo4j.com/developer/docker-run-neo4j/

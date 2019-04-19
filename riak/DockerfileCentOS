@@ -1,0 +1,16 @@
+FROM centos:7.1.1503
+
+RUN yum install -y epel-release
+RUN yum install -y gcc gcc-c++ glibc-devel make git pam-devel wget tar
+RUN wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+RUN rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+RUN yum install -y erlang
+
+RUN wget https://github.com/basho/riak/archive/riak-2.2.6.tar.gz && tar zxvf riak-2.2.6.tar.gz
+RUN cd riak-riak-2.2.6 && make rel
+
+COPY ./riak.conf /etc/riak
+
+EXPOSE 8087 8098
+
+CMD /root/riak/rel/bin/riak start

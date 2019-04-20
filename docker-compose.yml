@@ -46,7 +46,16 @@ services:
 
   #hive:
 
-  #oracle:
+  # @see https://github.com/oracle/docker-images/tree/master/OracleDatabase/SingleInstance
+  # @see https://sqlmaria.com/2017/04/27/oracle-database-12c-now-available-on-docker/
+  oracle:
+    image: oracle/database:12.2.0.1-se2
+    environment:
+      ORACLE_PWD: orclpa55
+    volumes:
+      - db_oracle:/opt/oracle/oradata
+    ports:
+      - 1521:1521 # listener
  
   # Created for executing all commands
   # Provide prepared environment

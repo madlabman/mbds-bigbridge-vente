@@ -35,6 +35,15 @@ services:
     ports:
       - 9042:9042 # cql
 
+  # Mongo
+  # @see https://docs.docker.com/samples/library/mongo/
+  document:
+    image: mongo:4.1.10-bionic
+    volumes:
+      - db_document:/data/db
+    ports:
+      - 27017:27017
+
   #hive:
 
   #oracle:
@@ -53,6 +62,7 @@ volumes:
   db_kv:
   db_column:
   db_graph:
+  db_document:
   db_hive:
   db_oracle:
 

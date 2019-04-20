@@ -8,6 +8,8 @@ services:
     build:
       context: ./riak
       dockerfile: ./Dockerfile
+    volumes:
+      - db_kv:/var/lib/riak
     ports:
       - 8087:8087
       - 8098:8098
@@ -24,7 +26,14 @@ services:
       - 7474:7474 # http
       - 7687:7687 # bolt
       
-  #column:
+  # Cassandra
+  # @see https://docs.docker.com/samples/library/cassandra/
+  column:
+    image: cassandra:3.11.4
+    volumes:
+      - db_column:/var/lib/cassandra
+    ports:
+      - 9042:9042 # cql
 
   #hive:
 

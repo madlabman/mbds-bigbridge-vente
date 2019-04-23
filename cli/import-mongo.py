@@ -22,7 +22,7 @@ try:
             document = json.loads(line)  # loading JSON from line
             collection.insert_one(document)  # inserting document into collection
             loaded_count += 1; bar.update(loaded_count)
-    bar.update(num_lines)  # for avoiding 99% status
+    bar.finish()  # for avoiding 99% status
     print('Data was loaded')
     sys.exit(0)
 except Exception as error:

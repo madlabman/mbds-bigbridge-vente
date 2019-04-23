@@ -14,3 +14,5 @@ RUN mkdir -p /opt/oracle
 COPY instantclient-basic-linux.x64-18.5.0.0.0dbru.zip /opt/oracle
 RUN unzip /opt/oracle/instantclient-basic-linux.x64-18.5.0.0.0dbru.zip -d /opt/oracle
 RUN echo /opt/oracle/instantclient_18_5 > /etc/ld.so.conf.d/oracle-instantclient.conf && ldconfig
+
+RUN pip install progressbar2

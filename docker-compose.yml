@@ -11,8 +11,8 @@ services:
     volumes:
       - db_kv:/var/lib/riak
     ports:
-      - 8087:8087
-      - 8098:8098
+      - 8087:8087 # pbc
+      - 8098:8098 # http
 
   # NEO4J 
   # @see https://neo4j.com/developer/docker-run-neo4j/
@@ -25,7 +25,7 @@ services:
     ports:
       - 7474:7474 # http
       - 7687:7687 # bolt
-      
+
   # Cassandra
   # @see https://docs.docker.com/samples/library/cassandra/
   column:
@@ -63,6 +63,7 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./cli:/app
+      - ./data:/data
 
   # Hive
   # @see https://github.com/big-data-europe/docker-hive

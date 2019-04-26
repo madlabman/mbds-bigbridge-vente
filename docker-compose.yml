@@ -20,8 +20,12 @@ services:
     image: neo4j:3.5.4
     environment:
       NEO4J_AUTH: neo4j/neo4jpa55
+      NEO4J_dbms_active__database: shop.db
+      NEO4J_dbms_directories_data: /var/lib/neo4j/data
     volumes:
-      - db_graph:/data
+      - db_graph:/var/lib/neo4j/data
+      - ./data:/import
+      - ./cli:/app
     ports:
       - 7474:7474 # http
       - 7687:7687 # bolt
@@ -32,6 +36,7 @@ services:
     image: cassandra:3.11.4
     volumes:
       - db_column:/var/lib/cassandra
+      - ./data:/import
     ports:
       - 9042:9042 # cql
 

@@ -10,6 +10,33 @@ classoption:
 
 # Big Bridge Ventes
 
+## Starting services
+
+All the required services described in *docker-compose.yml* file. To start up all services type following command:
+
+```bash
+docker-compose up -d
+```
+
+In case you need for start only selected service you may use following command:
+
+```bash
+docker-compose up -d <name_of_service>
+```
+
+For extended use cases and related commands look at docker documentation.
+
+Note that most of services will up automatically except *oracle* because it requires built image with proprietary source.
+See related link in *docker-compose.yml* file or download my own build:
+
+`https://1drv.ms/u/s!AqLgEs1phh2qjlKV9xn3T21Q4k5V`
+
+And import image using following command:
+
+```bash
+docker load < oracle-database-image.tar
+```
+
 ## Executing command inside container
 
 For getting inside container
